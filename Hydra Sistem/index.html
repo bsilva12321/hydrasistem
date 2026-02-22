@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hydra Sistem | Dashboard</title>
+    <!-- Modern Font: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background Glow Effect -->
+    <div class="bg-glow"></div>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-container">
+                <img src="logo.png" alt="Hydra Sistem Logo" id="brand-logo"
+                    onerror="this.src='https://via.placeholder.com/150x50/111/d000ff?text=HYDRA+SISTEM'">
+            </div>
+
+            <nav class="nav-menu">
+                <p class="nav-label">Menu Principal</p>
+                <div class="nav-item active" data-target="dashboard-view">
+                    <div class="nav-icon"><i class="fa-solid fa-house"></i></div>
+                    <span>Visão Geral</span>
+                </div>
+
+                <p class="nav-label mt-4">Conclave de Agentes</p>
+
+                <div class="nav-item agent-item" data-target="chat-view" data-agent-id="1">
+                    <div class="agent-avatar-sm">
+                        <i class="fa-solid fa-feather-pointed"></i>
+                    </div>
+                    <span>Copywriter Master</span>
+                </div>
+
+                <div class="nav-item agent-item" data-target="chat-view" data-agent-id="2">
+                    <div class="agent-avatar-sm">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <span>Arquiteto de Prompts (SaaS)</span>
+                </div>
+
+                <div class="nav-item agent-item" data-target="chat-view" data-agent-id="3">
+                    <div class="agent-avatar-sm">
+                        <i class="fa-solid fa-sack-dollar"></i>
+                    </div>
+                    <span>Closer High Ticket</span>
+                </div>
+
+                <div class="nav-item agent-item" data-target="chat-view" data-agent-id="4">
+                    <div class="agent-avatar-sm">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <span>Gestor de Tráfego</span>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar"><i class="fa-solid fa-user"></i></div>
+                    <div class="user-info" style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <strong id="sidebar-user-name">Usuário VIP</strong>
+                            <span id="sidebar-user-role" style="display: block;">Plano Hydra Prime</span>
+                        </div>
+                        <button id="btn-open-settings" title="Configurações do Sistema"
+                            style="background: transparent; border: none; color: var(--primary-neon); cursor: pointer; font-size: 1.2rem; transition: 0.3s; margin-left: auto;">
+                            <i class="fa-solid fa-gear"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+
+            <!-- Dashboard View -->
+            <section id="dashboard-view" class="view-section active">
+                <header class="top-header">
+                    <h1>Bem vindo ao Hydra!</h1>
+                    <p>O centro de comando da sua agência impulsionada por IA.</p>
+                </header>
+
+                <div class="dashboard-grid">
+                    <div class="glass-card stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-robot"></i></div>
+                        <div class="stat-details">
+                            <h3>Agentes Ativos</h3>
+                            <h2>3 <span class="badge">Online</span></h2>
+                        </div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <div class="stat-icon purple"><i class="fa-solid fa-bolt"></i></div>
+                        <div class="stat-details">
+                            <h3>Tarefas Executadas</h3>
+                            <h2 id="metric-tasks">0</h2>
+                        </div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <div class="stat-icon gold"><i class="fa-solid fa-database"></i></div>
+                        <div class="stat-details">
+                            <h3>Base de Conhecimento (RAG)</h3>
+                            <h2>Pendente</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card welcome-banner mt-4">
+                    <div class="banner-content">
+                        <h2>Sua equipe especializada está pronta.</h2>
+                        <p>Selecione um agente no menu à esquerda para iniciar uma interação direcionada. Em breve você
+                            poderá alimentar cada um com documentos específicos (RAG) para personalização avançada.</p>
+                        <button class="btn-primary" onclick="document.querySelector('.agent-item').click()">Iniciar
+                            Primeiro Chat <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                    <div class="banner-visual">
+                        <i class="fa-brands fa-connectdevelop"></i>
+                    </div>
+                </div>
+
+                <h3 class="section-title mt-4">Membros da Equipe</h3>
+                <div class="team-grid">
+                    <div class="team-card glass-card" onclick="document.querySelectorAll('.agent-item')[0].click()">
+                        <div class="team-avatar"><i class="fa-solid fa-feather-pointed"></i></div>
+                        <h4>Copywriter Master</h4>
+                        <p>Especialista em textos persuasivos, VSLs e e-mail marketing.</p>
+                    </div>
+                    <div class="team-card glass-card" onclick="document.querySelectorAll('.agent-item')[1].click()">
+                        <div class="team-avatar"><i class="fa-solid fa-code"></i></div>
+                        <h4>Arquiteto de Prompts</h4>
+                        <p>Engenharia reversa e otimização para criação de Apps e SaaS.</p>
+                    </div>
+                    <div class="team-card glass-card" onclick="document.querySelectorAll('.agent-item')[2].click()">
+                        <div class="team-avatar"><i class="fa-solid fa-sack-dollar"></i></div>
+                        <h4>Closer High Ticket</h4>
+                        <p>Domínio em scripts de vendas e contorno de objeções no X1.</p>
+                    </div>
+                    <div class="team-card glass-card" onclick="document.querySelectorAll('.agent-item')[3].click()">
+                        <div class="team-avatar"><i class="fa-solid fa-chart-line"></i></div>
+                        <h4>Gestor de Tráfego</h4>
+                        <p>Especialista em escala de Meta Ads, ROAS e análise criativa.</p>
+                    </div>
+                </div>
+                <h3 class="section-title mt-4" style="color: var(--primary-neon);">📊 Produtividade Semanal</h3>
+                <div class="glass-card"
+                    style="padding: 20px; margin-bottom: 25px; height: 300px; display: flex; justify-content: center; align-items: center;">
+                    <canvas id="productivity-chart"></canvas>
+                </div>
+
+                <h3 class="section-title mt-4" style="color: var(--primary-neon);">🚀 Modo Agência Autônoma</h3>
+                <div class="glass-card" style="padding: 25px; margin-bottom: 30px; border-color: var(--primary-neon);">
+                    <p style="color: var(--text-secondary); margin-bottom: 15px;">Digite a sua ideia de produto. O
+                        Arquiteto estruturará a oferta, o Copywriter fará a VSL e o Closer fará o Script de Vendas em
+                        cadeia.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" id="agency-input"
+                            placeholder="Ex: Um curso sobre como criar uma agência de IA..."
+                            style="flex: 1; padding: 12px 20px; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.3); color: white; font-family: inherit; font-size: 1rem;">
+                        <button class="btn-primary" id="btn-run-agency"
+                            style="min-width: 200px; justify-content: center;"><i
+                                class="fa-solid fa-wand-magic-sparkles"></i> Executar Cadeia</button>
+                    </div>
+                    <div id="agency-progress"
+                        style="display: none; margin-top: 20px; background: rgba(0,0,0,0.4); padding: 15px; border-radius: 8px; font-size: 0.9rem;">
+                        <div id="ag-step-1" style="color: var(--text-secondary); margin-bottom: 8px;"><i
+                                class="fa-solid fa-circle-notch fa-spin"></i> 1. Arquiteto mapeando a oferta...</div>
+                        <div id="ag-step-2" style="color: rgba(255,255,255,0.2); margin-bottom: 8px;"><i
+                                class="fa-solid fa-clock"></i> 2. Copywriter redigindo a VSL...</div>
+                        <div id="ag-step-3" style="color: rgba(255,255,255,0.2);"><i class="fa-solid fa-clock"></i> 3.
+                            Closer montando o Script final...</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chat View -->
+            <section id="chat-view" class="view-section">
+                <!-- Chat Header -->
+                <header class="chat-header glass-panel">
+                    <div class="chat-agent-info">
+                        <div class="agent-avatar-lg" id="current-agent-icon">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div>
+                            <h2 id="current-agent-name">Nome do Agente</h2>
+                            <p id="current-agent-role">Especialidade</p>
+                        </div>
+                    </div>
+                    <div class="chat-actions"
+                        style="position: relative; display: flex; gap: 15px; align-items: center;">
+                        <button id="btn-zen-mode" class="btn-icon" title="Modo Zen (Tela Cheia)">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+                        <button id="btn-prompts-hub" class="btn-icon" title="Hub de Prompts (Favoritos)">
+                            <i class="fa-solid fa-book-bookmark"></i>
+                        </button>
+                        <button class="btn-icon" id="btn-view-rag" title="Ver Conhecimento Base do Agente"><i
+                                class="fa-solid fa-brain"></i> RAG</button>
+
+                        <!-- Dropdown Button -->
+                        <button class="btn-icon" id="btn-agent-mode" title="Modo de Operação"><i
+                                class="fa-solid fa-ellipsis-vertical"></i></button>
+
+                        <!-- Dropdown Menu -->
+                        <div id="mode-dropdown" class="glass-card"
+                            style="display: none; position: absolute; right: 0; top: 110%; padding: 10px; width: 220px; z-index: 50;">
+                            <p
+                                style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 8px; text-transform: uppercase;">
+                                Modo de Inteligência</p>
+                            <label class="mode-option"
+                                style="display: flex; align-items: flex-start; gap: 10px; padding: 10px; cursor: pointer; border-radius: 8px; transition: 0.2s;">
+                                <input type="radio" name="agent_mode" value="basic" checked style="margin-top: 4px;">
+                                <div>
+                                    <strong style="display: block; font-size: 0.9rem;">Básico (Econômico)</strong>
+                                    <span style="font-size: 0.75rem; color: var(--text-secondary);">Gasta menos
+                                        créditos, ideal para pequenas tarefas.</span>
+                                </div>
+                            </label>
+                            <label class="mode-option"
+                                style="display: flex; align-items: flex-start; gap: 10px; padding: 10px; cursor: pointer; border-radius: 8px; transition: 0.2s; margin-top: 5px;">
+                                <input type="radio" name="agent_mode" value="pro" style="margin-top: 4px;">
+                                <div>
+                                    <strong style="display: block; font-size: 0.9rem; color: var(--primary-neon);">PRO
+                                        (Máximo)</strong>
+                                    <span style="font-size: 0.75rem; color: var(--text-secondary);">Usa poder total,
+                                        cria textos longos e raciocínio profundo.</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Chat Messages Area -->
+                <div class="chat-messages" id="chat-container">
+                    <!-- Dynamic Messages will appear here -->
+                    <div class="message system-msg">
+                        <div class="msg-bubble">Sincronizando com os servidores Hydra... <span>Pronto</span></div>
+                    </div>
+                </div>
+
+                <!-- Quick Objection Bank (Fase 3 - Only for Closer Agent) -->
+                <div id="objection-bank"
+                    style="display: none; padding: 10px 30px; gap: 10px; flex-wrap: wrap; background: rgba(0,0,0,0.2); border-top: 1px solid var(--glass-border);">
+                    <button class="btn-objection" data-obj="O cliente achou o produto muito caro. Como reverto?">💰 Tá
+                        Caro</button>
+                    <button class="btn-objection"
+                        data-obj="O cliente disse que precisa pensar sobre o assunto. O que respondo?">🤔 Vou
+                        Pensar</button>
+                    <button class="btn-objection"
+                        data-obj="O cliente disse que precisa falar com a esposa/marido antes de fechar.">❌ Falar com
+                        Esposa(o)</button>
+                    <button class="btn-objection"
+                        data-obj="O cliente parou de me responder (Tomou Ghosting). Como revivo o contato?">👻
+                        Ghosting</button>
+                </div>
+
+                <!-- Chat Input Area -->
+                <div class="chat-input-area glass-panel" style="position: relative;">
+                    <input type="file" id="file-upload" accept="image/*,audio/*,.pdf,.txt,.csv,.doc,.docx"
+                        style="display: none;">
+                    <div id="attachment-preview"
+                        style="display: none; position: absolute; top: -45px; left: 20px; background: rgba(0,0,0,0.8); padding: 8px 15px; border-radius: 8px; border: 1px solid var(--primary-neon); color: white; font-size: 0.85rem; align-items: center; gap: 10px; z-index: 100;">
+                        <i class="fa-solid fa-file" id="attachment-icon" style="color: var(--secondary-neon);"></i>
+                        <span id="attachment-name">arquivo.png</span>
+                        <i class="fa-solid fa-times" id="remove-attachment"
+                            style="cursor: pointer; color: #ff4444; margin-left: 10px;"></i>
+                    </div>
+
+                    <button class="btn-attach" id="btn-attach" title="Anexar arquivo / Imagem"><i
+                            class="fa-solid fa-paperclip"></i></button>
+
+                    <button class="btn-attach" id="btn-voice" title="Digitação por Voz" style="margin-left: -5px;"><i
+                            class="fa-solid fa-microphone"></i></button>
+
+                    <textarea id="chat-input" placeholder="Digite sua mensagem para o agente..." rows="1"></textarea>
+                    <button class="btn-send" id="btn-send"><i class="fa-solid fa-paper-plane"></i></button>
+
+                    <div id="voice-indicator"
+                        style="display: none; position: absolute; top: -35px; right: 80px; color: #ff003c; font-size: 0.85rem; background: rgba(0,0,0,0.8); padding: 5px 10px; border-radius: 8px; border: 1px solid #ff003c; align-items: center; gap: 5px; z-index: 100;">
+                        <i class="fa-solid fa-record-vinyl fa-beat"></i> Gravando... (Clique de novo p/ parar)
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- RAG View Modal -->
+    <div id="rag-modal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); z-index: 1000; align-items: center; justify-content: center;">
+        <div class="glass-card"
+            style="width: 80%; max-width: 800px; max-height: 80vh; display: flex; flex-direction: column;">
+            <div
+                style="padding: 20px; border-bottom: 1px solid var(--glass-border); display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="display: flex; align-items: center; gap: 10px;"><i class="fa-solid fa-brain"
+                        style="color: var(--primary-neon);"></i> Base de Conhecimento Instanciada</h3>
+                <button id="close-rag-modal"
+                    style="background: transparent; border: none; color: white; font-size: 1.5rem; cursor: pointer;"><i
+                        class="fa-solid fa-times"></i></button>
+            </div>
+            <div style="padding: 20px; overflow-y: auto; flex: 1;">
+                <pre id="rag-content-display"
+                    style="background: rgba(0,0,0,0.5); padding: 15px; border-radius: 8px; color: #00ff64; font-size: 0.85rem; white-space: pre-wrap; word-wrap: break-word; font-family: monospace;"></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); z-index: 2000; align-items: center; justify-content: center;">
+        <div class="glass-card" style="width: 90%; max-width: 500px; padding: 30px; position: relative;">
+            <button id="close-settings-modal"
+                style="position: absolute; top: 15px; right: 20px; background: transparent; border: none; color: white; font-size: 1.5rem; cursor: pointer;"><i
+                    class="fa-solid fa-times"></i></button>
+
+            <h2 style="margin-bottom: 25px; display: flex; align-items: center; gap: 10px;"><i
+                    class="fa-solid fa-sliders" style="color: var(--primary-neon);"></i> Configurações do Sistema</h2>
+
+            <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                <div style="flex: 1;">
+                    <label
+                        style="display: block; font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 8px;">Seu
+                        Nome <i class="fa-solid fa-user"></i></label>
+                    <input type="text" id="input-user-name" placeholder="Ex: Bernardo" class="modern-input">
+                </div>
+                <div style="flex: 1;">
+                    <label
+                        style="display: block; font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 8px;">Seu
+                        Cargo <i class="fa-solid fa-briefcase"></i></label>
+                    <input type="text" id="input-user-role" placeholder="Ex: Gestor de Tráfego" class="modern-input">
+                </div>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <label
+                    style="display: block; font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 8px;">Chave
+                    da API Gemini (Google) <i class="fa-solid fa-key"></i></label>
+                <input type="password" id="input-api-key" placeholder="Cole sua API Key aqui (AIzaSy...)"
+                    style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.3); color: white; font-family: monospace;">
+                <p style="font-size: 0.75rem; color: #ffeb3b; margin-top: 5px;"><i
+                        class="fa-solid fa-shield-halved"></i> Sua chave é salva localmente no seu navegador.</p>
+            </div>
+
+            <div style="margin-bottom: 30px;">
+                <label style="display: block; font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 8px;">Tema
+                    do Workspace <i class="fa-solid fa-palette"></i></label>
+                <div style="display: flex; gap: 10px;">
+                    <button class="theme-btn" data-theme="default"
+                        style="flex:1; padding: 10px; background: #07050e; border: 2px solid #a020f0; color: white; border-radius: 8px; cursor: pointer;">Neon
+                        Purple</button>
+                    <button class="theme-btn" data-theme="cyberpunk"
+                        style="flex:1; padding: 10px; background: #111; border: 1px solid #333; color: white; border-radius: 8px; cursor: pointer;">Cyber
+                        Yellow</button>
+                    <button class="theme-btn" data-theme="matrix"
+                        style="flex:1; padding: 10px; background: #051405; border: 1px solid #333; color: white; border-radius: 8px; cursor: pointer;">Matrix
+                        Green</button>
+                </div>
+            </div>
+
+            <button id="btn-save-settings" class="btn-primary" style="width: 100%; justify-content: center;">Salvar
+                Configurações</button>
+        </div>
+    </div>
+
+    <!-- Agency Output Modal -->
+    <div id="agency-modal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 3000; align-items: center; justify-content: center;">
+        <div class="glass-card"
+            style="width: 90%; max-width: 900px; height: 85vh; padding: 30px; position: relative; display: flex; flex-direction: column;">
+            <button id="close-agency-modal"
+                style="position: absolute; top: 15px; right: 20px; background: transparent; border: none; color: white; font-size: 1.5rem; cursor: pointer;"><i
+                    class="fa-solid fa-times"></i></button>
+
+            <h2 style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px; color: var(--primary-neon);">
+                <i class="fa-solid fa-rocket"></i> Agência Automática (Resultados)
+            </h2>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 20px;">Orquestração concluída.
+                Acompanhe a entrega dos 3 Agentes abaixo.</p>
+
+            <div style="display: flex; gap: 10px; margin-bottom: 15px;" id="agency-tabs">
+                <button class="agency-tab" data-tab="tab-arch"
+                    style="padding: 10px 20px; background: var(--primary-neon); color: white; border: none; border-radius: 8px; cursor: pointer;">1.
+                    Arquiteto (Estrutura)</button>
+                <button class="agency-tab" data-tab="tab-copy"
+                    style="padding: 10px 20px; background: rgba(255,255,255,0.1); color: white; border: none; border-radius: 8px; cursor: pointer;">2.
+                    Copywriter (VSL)</button>
+                <button class="agency-tab" data-tab="tab-closer"
+                    style="padding: 10px 20px; background: rgba(255,255,255,0.1); color: white; border: none; border-radius: 8px; cursor: pointer;">3.
+                    Closer (Script Frio)</button>
+            </div>
+
+            <div
+                style="flex: 1; overflow-y: auto; background: rgba(0,0,0,0.4); border-radius: 12px; padding: 20px; border: 1px solid var(--glass-border); position: relative;">
+                <div class="agency-content-panel" id="tab-arch"
+                    style="color: white; font-size: 0.95rem; line-height: 1.6;">Processando...</div>
+                <div class="agency-content-panel" id="tab-copy"
+                    style="display: none; color: white; font-size: 0.95rem; line-height: 1.6;">Aguardando fase
+                    anterior...</div>
+                <div class="agency-content-panel" id="tab-closer"
+                    style="display: none; color: white; font-size: 0.95rem; line-height: 1.6;">Aguardando fase
+                    anterior...</div>
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-top: 15px; align-self: flex-end;">
+                <button id="btn-export-agency" class="btn-primary" style="background: rgba(255,255,255,0.1);"><i
+                        class="fa-solid fa-download"></i> Baixar Todas as Fases (.txt)</button>
+                <button id="btn-export-agency-docx" class="btn-primary"><i class="fa-solid fa-file-word"></i> Baixar
+                    Todas (.docx)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Prompts Hub Modal (Fase 3) -->
+    <div id="prompts-modal" class="modal-overlay" style="display: none;">
+        <div class="glass-card modal-content" style="width: 500px;">
+            <header class="modal-header">
+                <h2><i class="fa-solid fa-book-bookmark"></i> Hub de Prompts Salvos</h2>
+                <button class="btn-icon" id="close-prompts-modal"><i class="fa-solid fa-xmark"></i></button>
+            </header>
+            <div class="modal-body">
+                <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                    <input type="text" id="new-prompt-title" placeholder="Nome do Prompt (ex: Frio VSL)"
+                        class="modern-input" style="flex: 1;">
+                    <button id="btn-save-new-prompt" class="btn-primary" style="padding: 10px 15px;">Salvar
+                        Atual</button>
+                </div>
+                <div id="prompts-list"
+                    style="display: flex; flex-direction: column; gap: 10px; max-height: 300px; overflow-y: auto; padding-right: 5px;">
+                    <!-- Prompts dinâmicos entrarão aqui -->
+                    <p style="color: var(--text-secondary); text-align: center; font-size: 0.9rem;">Nenhum prompt salvo
+                        ainda. Escreva algo no chat e clique em "Salvar Atual".</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html-docx-js@0.3.1/dist/html-docx.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="rag_copywriter.js?v=3"></script>
+    <script src="rag_architect.js?v=3"></script>
+    <script src="rag_closer.js?v=3"></script>
+    <script src="rag_gestor_trafego.js?v=1"></script>
+    <script src="script.js?v=4"></script>
+</body>
+
+</html>
